@@ -7,11 +7,13 @@ app.use(express.json())
 var knex = require('./models/database');
 // const api_key = "f18f5cd0afd42cbfd6f6359510d62ebc";
 
+// Task-1
 // route to currencyMetadata.js
 var currencyMetadata = express.Router();
 app.use("/", currencyMetadata);
 require("./Routes/currencyMetadata")(currencyMetadata, knex, axios, CircularJSON);
 
+// Task-2
 // route to tickerMetadata.js
 var tickerMetadata = express.Router();
 app.use("/", tickerMetadata);
