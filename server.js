@@ -5,7 +5,6 @@ const CircularJSON = require('circular-json');
 app.use(express.json())
 
 var knex = require('./models/database');
-// const api_key = "f18f5cd0afd42cbfd6f6359510d62ebc";
 const api_key = process.env.api_key;
 
 // Task-1
