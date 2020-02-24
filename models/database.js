@@ -39,7 +39,8 @@ knex.schema.createTable('CurrenciesTickerMetadata', function (table) {
     table.string('id');
     table.string('currency');
     table.string('symbol');
-    table.string('logo');
+    table.string('name');
+    table.string('logo_url');
     table.string('rank');
     table.string('price');
     table.string('price_date');
@@ -48,15 +49,91 @@ knex.schema.createTable('CurrenciesTickerMetadata', function (table) {
     table.string('max_supply');
     table.string('high');
     table.string('high_timestamp');
-    table.string('1d');
-    table.string('7d');
-    table.string('30d');
-    table.string('365d');
 
 }).then(() => {
     console.log("CurrenciesTickerMetadata table created successfully....")
 }).catch(() => {
     console.log("CurrenciesTickerMetadata table is already exists!");
+})
+
+// Create 1d table
+knex.schema.createTable('1d', function (table) {
+    table.string('id');
+    table.string('price_change');
+    table.string('price_change_pct');
+    table.string('volume');
+    table.string('volume_change');
+    table.string('volume_change_pct');
+    table.string('market_cap_change');
+    table.string('market_cap_change_pct');
+}).then(() => {
+    console.log("1d table created successfully....")
+}).catch(() => {
+    console.log("1d table already exists!")
+})
+
+// Create 7d table
+knex.schema.createTable('7d', function (table) {
+    table.string('id');
+    table.string('price_change');
+    table.string('price_change_pct');
+    table.string('volume');
+    table.string('volume_change');
+    table.string('volume_change_pct');
+    table.string('market_cap_change');
+    table.string('market_cap_change_pct');
+}).then(() => {
+    console.log("7d table created successfully....")
+}).catch(() => {
+    console.log("7d table already exists!")
+})
+
+// Create 30d table
+knex.schema.createTable('30d', function (table) {
+    table.string('id');
+    table.string('price_change');
+    table.string('price_change_pct');
+    table.string('volume');
+    table.string('volume_change');
+    table.string('volume_change_pct');
+    table.string('market_cap_change');
+    table.string('market_cap_change_pct');
+}).then(() => {
+    console.log("30d table created successfully....")
+}).catch(() => {
+    console.log("30d table already exists!")
+})
+
+// Create 365d table
+knex.schema.createTable('365d', function (table) {
+    table.string('id');
+    table.string('price_change');
+    table.string('price_change_pct');
+    table.string('volume');
+    table.string('volume_change');
+    table.string('volume_change_pct');
+    table.string('market_cap_change');
+    table.string('market_cap_change_pct');
+}).then(() => {
+    console.log("365d table created successfully....")
+}).catch(() => {
+    console.log("365d table already exists!")
+})
+
+// Create ytd table
+knex.schema.createTable('ytd', function (table) {
+    table.string('id');
+    table.string('price_change');
+    table.string('price_change_pct');
+    table.string('volume');
+    table.string('volume_change');
+    table.string('volume_change_pct');
+    table.string('market_cap_change');
+    table.string('market_cap_change_pct');
+}).then(() => {
+    console.log("ytd table created successfully....")
+}).catch(() => {
+    console.log("ytd table already exists!")
 })
 
 module.exports = knex;

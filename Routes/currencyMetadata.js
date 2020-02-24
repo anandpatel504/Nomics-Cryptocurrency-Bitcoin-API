@@ -6,16 +6,35 @@ app.get("/alldata", (req, res) => {
             var maindata = CircularJSON.stringify(data);
             var parsedata = JSON.parse(maindata);
             var curr_data = parsedata.data;
-            console.log(curr_data.length);
+            // console.log(curr_data.length);
             // res.send(curr_data);
-            for (let i = 0; i< curr_data.length; i++) {
+
+            // Here I'm iserting data inside the loop but it throw knex timeout
+            // for (let i = 0; i< curr_data.length; i++) {
+            //     knex('CurrenciesMetadata').insert(curr_data[i])
+            //     .then((data) =>{
+            //         console.log("done");
+            //     }).catch((err) =>{
+            //         console.log(err);
+            //     })
+            // }
+
+            // data inserting inside setInterval function; 
+            let i=0;
+            var myfunc = setInterval (function(){
                 knex('CurrenciesMetadata').insert(curr_data[i])
                 .then((data) =>{
-                    console.log("done");
                 }).catch((err) =>{
                     console.log(err);
                 })
-            }
+                console.log(i,"data inserted successfully.")
+                i = i + 1;
+                if(i==curr_data.length-1){
+                    clearInterval(myfunc);
+                }
+            },1000/50);
+            res.send({"success": curr_data})
+
         }).catch((err) => {
             console.log(err);
         })
