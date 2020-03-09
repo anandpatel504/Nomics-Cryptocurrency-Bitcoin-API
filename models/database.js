@@ -36,18 +36,16 @@ knex.schema.createTable('CurrenciesMetadata', function (table) {
 
 // Create CurrenciesTickerMetadata table
 knex.schema.createTable('CurrenciesTickerMetadata', function (table) {
-    table.string('id');
     table.string('currency');
     table.string('symbol');
-    table.string('name');
     table.string('logo_url');
-    table.string('rank');
-    table.string('price');
+    table.integer('rank');
+    table.integer('price');
     table.string('price_date');
-    table.string('market_cap');
+    table.integer('market_cap');
     table.string('circulating_supply');
     table.string('max_supply');
-    table.string('high');
+    table.integer('high');
     table.string('high_timestamp');
 
 }).then(() => {
