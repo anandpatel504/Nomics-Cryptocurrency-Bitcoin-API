@@ -1,5 +1,6 @@
 module.exports = (app, knex, axios, CircularJSON) =>{
 // get all currencyMetadata
+
 app.get("/alldata", (req, res) => {
     axios.get("https://api.nomics.com/v1/currencies?key="+ process.env.api_key +"&attributes=original_symbol,name,description,website_url,logo_url,blog_url,discord_url,facebook_url,github_url,medium_url,reddit_url,telegram_url,twitter_url,youtube_url")
         .then((data) => {
@@ -9,18 +10,8 @@ app.get("/alldata", (req, res) => {
             // console.log(curr_data.length);
             // res.send(curr_data);
 
-            // Here I'm iserting data inside the loop but it throw knex timeout
-            // for (let i = 0; i< curr_data.length; i++) {
-            //     knex('CurrenciesMetadata').insert(curr_data[i])
-            //     .then((data) =>{
-            //         console.log("done");
-            //     }).catch((err) =>{
-            //         console.log(err);
-            //     })
-            // }
-
-            // data inserting inside setInterval function; 
-            let i=0;
+            // data inserting inside setInterval function;
+            var i=0;
             var myfunc = setInterval (function(){
                 knex('CurrenciesMetadata').insert(curr_data[i])
                 .then((data) =>{
@@ -38,6 +29,7 @@ app.get("/alldata", (req, res) => {
         }).catch((err) => {
             console.log(err);
         })
+        
 })
 
 // get all currencydata

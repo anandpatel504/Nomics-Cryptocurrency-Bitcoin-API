@@ -6,11 +6,12 @@ module.exports = (app, knex, axios, CircularJSON) => {
                 var tickerdata = CircularJSON.stringify(result);
                 var parsedata = JSON.parse(tickerdata);
                 var ticdata = parsedata.data;
-                console.log(ticdata.length);
+                // console.log(ticdata.length);
                 // res.send(ticdata);
                 
                 for (var i = 0; i< ticdata.length; i++) {
                     var ticker_meta_data = ticdata[i];
+                    // Here I'm inserting normal object data's
                     knex ('CurrenciesTickerMetadata').insert ({
                         "currency": ticker_meta_data.currency,
                         "symbol": ticker_meta_data.symbol,
